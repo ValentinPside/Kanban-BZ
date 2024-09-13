@@ -11,8 +11,11 @@ interface Dao {
     @Upsert
     suspend fun upsertTaskTable(taskEntity: TaskEntity)
 
+    @Upsert
+    suspend fun upsertCommentsTable(commentEntity: CommentEntity)
+
     @Query("SELECT * FROM taskTable")
-    fun getAllFromTaskTable(): Flow<List<TaskEntity>>
+    fun getAllTasks(): Flow<List<TaskAndCommentsEntity>>
 
     @Query("DELETE FROM taskTable")
     fun removeAll()
