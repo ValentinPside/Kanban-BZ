@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Kanban BZ</string>
+    <string name="taskDesk">Доска задач</string>
+    <string name="toDo">Выполнить</string>
+    <string name="inProgress">В работе</string>
+    <string name="done">Готово</string>
+    <string name="name">Название</string>
+    <string name="date">Дата</string>
 </resources>
