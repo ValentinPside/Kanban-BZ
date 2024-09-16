@@ -57,13 +57,6 @@ dependencies {
     //coroutines
     implementation(libs.kotlinx.coroutines.android)
 
-    //network
-    implementation(libs.gson)
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.okhttp)
-    implementation(libs.logging.interceptor)
-
 
     // navigation
     implementation(libs.androidx.navigation.fragment.ktx)

@@ -2,15 +2,15 @@ package com.example.kanbanbz.data.db
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import okhttp3.internal.concurrent.Task
 
 class TaskAndCommentsEntity {
     @Embedded
-    var task: Task? = null
+    var task: TaskEntity? = null
 
     @Relation(
         parentColumn = "id",
-        entityColumn = "taskId"
+        entityColumn = "taskId",
+        entity = CommentEntity::class
     )
-    var comments: List<CommentEntity> = ArrayList()
+    var comments: List<CommentEntity>? = null
 }
