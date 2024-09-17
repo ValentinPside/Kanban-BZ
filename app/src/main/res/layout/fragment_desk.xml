@@ -1,64 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.DeskFragment"
     android:orientation="vertical"
-    android:weightSum="10">
+    android:weightSum="10"
+    tools:context=".presentation.DeskFragment">
 
 
-    <TextView
-        android:id="@+id/textView"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:text="@string/taskDesk"
-        android:gravity="center"
-        android:textAlignment="gravity"
-        />
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:weightSum="3">
 
-    <LinearLayout
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="+" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/taskDesk"
+            android:layout_weight="1"
+            android:textAlignment="gravity" />
+    </TableRow>
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="0.5"
-        android:weightSum="3"
-        android:gravity="center"
-        android:textAlignment="gravity">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:weightSum="3">
 
         <TextView
             android:id="@+id/startTv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1"
-            android:text="@string/toDo"
-            android:gravity="center" />
+            android:text="@string/toDo" />
 
         <TextView
             android:id="@+id/inProgressTv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1"
-            android:text="@string/inProgress"
-            android:gravity="center" />
+            android:text="@string/inProgress" />
 
         <TextView
             android:id="@+id/doneTv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1"
-            android:text="@string/done"
-            android:gravity="center" />
-    </LinearLayout>
+            android:text="@string/done" />
+    </TableRow>
 
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="bottom"
-        android:layout_weight="9"
-        android:orientation="horizontal"
+        android:layout_weight="8"
         android:weightSum="3">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -66,14 +74,14 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            tools:listitem="@layout/task_item"/>
+            tools:listitem="@layout/task_item" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/inProgressRv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            tools:listitem="@layout/task_item"/>
+            tools:listitem="@layout/task_item" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/doneRv"
@@ -83,6 +91,6 @@
             tools:listitem="@layout/task_item">
 
         </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
+    </TableRow>
 
-</LinearLayout>
+</TableLayout>

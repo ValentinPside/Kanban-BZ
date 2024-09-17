@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_deskFragment_to_taskFragment"
             app:destination="@id/taskFragment" />
+        <action
+            android:id="@+id/action_deskFragment_to_newTaskFragment"
+            app:destination="@id/newTaskFragment" />
     </fragment>
     <fragment
         android:id="@+id/taskFragment"
@@ -21,6 +24,15 @@
         tools:layout="@layout/fragment_task" >
         <action
             android:id="@+id/action_taskFragment_to_deskFragment"
+            app:destination="@id/deskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newTaskFragment"
+        android:name="com.example.kanbanbz.presentation.NewTaskFragment"
+        android:label="fragment_new_task"
+        tools:layout="@layout/fragment_new_task" >
+        <action
+            android:id="@+id/action_newTaskFragment_to_deskFragment"
             app:destination="@id/deskFragment" />
     </fragment>
 </navigation>
