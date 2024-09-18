@@ -1,4 +1,4 @@
-package com.example.kanbanbz.data.db
+package com.example.kanbanbz.data.db.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
