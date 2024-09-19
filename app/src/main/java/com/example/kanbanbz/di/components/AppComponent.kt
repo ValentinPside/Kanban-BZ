@@ -22,6 +22,10 @@ interface AppComponent {
 
     fun newTaskComponent(): NewTaskComponent
 
+    fun newCommentComponent(): NewCommentComponent.NewCommentComponentFactory
+
+    fun newStatusComponent(): ChangeStatusComponent.ChangeStatusComponentFactory
+
     @Component.Factory
     interface AppComponentFactory {
         fun create(@BindsInstance context: Context): AppComponent

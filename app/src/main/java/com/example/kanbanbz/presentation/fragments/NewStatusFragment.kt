@@ -7,27 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.kanbanbz.R
 import com.example.kanbanbz.app.App
-import com.example.kanbanbz.databinding.FragmentTaskBinding
-import com.example.kanbanbz.presentation.viewmodels.TaskViewModel
-
+import com.example.kanbanbz.databinding.FragmentNewCommentBinding
+import com.example.kanbanbz.databinding.FragmentNewStatusBinding
+import com.example.kanbanbz.databinding.FragmentNewTaskBinding
+import com.example.kanbanbz.di.components.ChangeStatusComponent
+import com.example.kanbanbz.presentation.viewmodels.NewCommentViewModel
+import com.example.kanbanbz.presentation.viewmodels.NewStatusViewModel
 import com.example.kanbanbz.utils.Factory
 import kotlinx.coroutines.launch
 
-class TaskFragment : Fragment() {
+class NewStatusFragment : Fragment() {
 
-    private var _binding: FragmentTaskBinding? = null
+    private var _binding: FragmentNewStatusBinding? = null
     private val binding get() = _binding!!
     private val id by lazy { requireArguments().getString("id") }
-    private val viewModel by viewModels<TaskViewModel> {
+    private val viewModel by viewModels<NewStatusViewModel> {
         Factory {
-            App.appComponent.taskComponent().create(requireNotNull(id)).viewModel()
+            App.appComponent.newStatusComponent().create(requireNotNull(id)).viewModel()
         }
     }
 
@@ -36,7 +38,7 @@ class TaskFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTaskBinding.inflate(inflater, container, false)
+        _binding = FragmentNewStatusBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -46,31 +48,30 @@ class TaskFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        binding.addCommentButton.setOnClickListener {
-            val bundle = bundleOf("id" to id)
-            findNavController().navigate(
-                R.id.action_taskFragment_to_newCommentFragment, bundle
-            )
-        }
-
-        binding.changeStatusButton.setOnClickListener {
-            val bundle = bundleOf("id" to id)
-            findNavController().navigate(
-                R.id.action_taskFragment_to_newStatusFragment, bundle
-            )
-        }
+        /*binding.saveNewCommentButton.setOnClickListener {
+            val text = binding.editTextTextMultiLine.text.toString()
+            if (!id.isNullOrBlank() && text.isNotBlank()) {
+                viewModel.addComment(id!!.toInt(), text)
+                findNavController().popBackStack()
+            }
+        }*/
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.observeUi().collect { state ->
-                    binding.specificToolbars.title = state.taskName
-                    binding.commentsText.text = state.comments
-                    state.error?.let {
+                    state.success?.let { it ->
                         Toast.makeText(
                             requireContext(),
                             getString(it),
                             Toast.LENGTH_SHORT
                         ).show()
+                        state.error?.let {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(it),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }

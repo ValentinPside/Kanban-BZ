@@ -8,9 +8,14 @@
     <string name="date">Дата</string>
     <string name="plus">+</string>
     <string name="error_message">Что-то пошло не так</string>
+    <string name="add_comment_message">Комментарий успешно добавлен</string>
+    <string name="empty_comments_message">Комментариев пока нет</string>
     <string name="newName">Название задачи</string>
     <string name="newComment">Комментарий к задаче</string>
     <string name="newTaskTextButton">Создать новую задачу</string>
     <string name="success_message">Задача успешно создана</string>
     <string name="empty_message">Необходимо ввести название задачи</string>
+    <string name="add_comment">Создать новый коментарий</string>
+    <string name="change_status">Сменить статус</string>
+    <string name="save_new_comment">Сохранить комментарий</string>
 </resources>

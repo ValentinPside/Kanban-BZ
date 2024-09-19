@@ -25,6 +25,12 @@
         <action
             android:id="@+id/action_taskFragment_to_deskFragment"
             app:destination="@id/deskFragment" />
+        <action
+            android:id="@+id/action_taskFragment_to_newCommentFragment"
+            app:destination="@id/newCommentFragment" />
+        <action
+            android:id="@+id/action_taskFragment_to_newStatusFragment"
+            app:destination="@id/newStatusFragment" />
     </fragment>
     <fragment
         android:id="@+id/newTaskFragment"
@@ -34,5 +40,23 @@
         <action
             android:id="@+id/action_newTaskFragment_to_deskFragment"
             app:destination="@id/deskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCommentFragment"
+        android:name="com.example.kanbanbz.presentation.fragments.NewCommentFragment"
+        android:label="fragment_new_comment"
+        tools:layout="@layout/fragment_new_comment" >
+        <action
+            android:id="@+id/action_newCommentFragment_to_taskFragment"
+            app:destination="@id/taskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newStatusFragment"
+        android:name="com.example.kanbanbz.presentation.fragments.NewStatusFragment"
+        android:label="fragment_new_status"
+        tools:layout="@layout/fragment_new_status" >
+        <action
+            android:id="@+id/action_newStatusFragment_to_taskFragment"
+            app:destination="@id/taskFragment" />
     </fragment>
 </navigation>

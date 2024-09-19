@@ -1,8 +1,10 @@
 package com.example.kanbanbz.data.db
 
 import android.annotation.SuppressLint
+import com.example.kanbanbz.data.db.entities.CommentEntity
 import com.example.kanbanbz.data.db.entities.TaskEntity
 import com.example.kanbanbz.domain.DbRepository
+import com.example.kanbanbz.domain.models.Comment
 import com.example.kanbanbz.domain.models.Task
 import com.example.kanbanbz.domain.models.TaskAndComments
 import com.example.kanbanbz.utils.asTaskAndComments
@@ -39,6 +41,11 @@ class DbRepositoryImpl @Inject constructor(private val db: MainDb) : DbRepositor
             date = currentDate
         )
         db.dao().upsertTaskTable(task)
+    }
+
+    override suspend fun addNewComment(taskId: Int, text: String) {
+        val commentEntity = CommentEntity(0, taskId, text)
+        db.dao().upsertCommentsTable(commentEntity)
     }
 
 }

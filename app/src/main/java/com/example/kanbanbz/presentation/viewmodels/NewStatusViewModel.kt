@@ -10,32 +10,15 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class TaskViewModel @Inject constructor(
+class NewStatusViewModel @Inject constructor(
     private val dbRepository: DbRepository,
     id: String
 ) : ViewModel() {
 
-    private val state = MutableStateFlow(TaskState())
+    private val state = MutableStateFlow(NewStatusState())
     fun observeUi() = state.asStateFlow()
 
-    init {
-        getTask(id.toInt())
-    }
-
-    private fun getTask(id: Int) {
-        viewModelScope.launch {
-            try {
-                val taskAndComments = dbRepository.getTasksById(id)
-                val name = taskAndComments?.name
-                val commentsText = taskAndComments?.commentList.toString()
-                state.update { it.copy(taskName = name, comments = commentsText, error = null) }
-            } catch (e: Exception) {
-                state.update { it.copy(error = R.string.empty_comments_message) }
-            }
-        }
-    }
-
-    /*fun addComment(id: Int, commentText: String){
+    fun addComment(id: Int, commentText: String){
         viewModelScope.launch {
             try {
                 dbRepository.addNewComment(id, commentText)
@@ -44,12 +27,10 @@ class TaskViewModel @Inject constructor(
                 state.update { it.copy(error = R.string.error_message) }
             }
         }
-    }*/
+    }
 }
 
-data class TaskState(
-    val taskName: String? = null,
-    val comments: String? = null,
+data class NewStatusState(
     val success: Int? = null,
     val error: Int? = null
 )

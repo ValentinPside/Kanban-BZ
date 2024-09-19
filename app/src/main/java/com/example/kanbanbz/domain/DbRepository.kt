@@ -17,4 +17,6 @@ interface DbRepository {
 
     suspend fun addNewTask(name: String)
 
+    suspend fun addNewComment(taskId: Int, text: String)
+
 }
