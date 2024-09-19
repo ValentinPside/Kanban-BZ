@@ -9,14 +9,16 @@ interface DbRepository {
 
     suspend fun getTasksById(id: Int): TaskAndComments?
 
-    fun getStartTasks(): Flow<List<TaskEntity>>
+    suspend fun getStartTasks(): List<TaskEntity>
 
-    fun getInProgressTasks(): Flow<List<TaskEntity>>
+    suspend fun getInProgressTasks(): List<TaskEntity>
 
-    fun getDoneTasks(): Flow<List<TaskEntity>>
+    suspend fun getDoneTasks(): List<TaskEntity>
 
     suspend fun addNewTask(name: String)
 
     suspend fun addNewComment(taskId: Int, text: String)
+
+    suspend fun changeStatus(id: Int, statusId: Int)
 
 }

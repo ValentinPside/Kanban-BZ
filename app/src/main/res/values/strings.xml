@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Kanban BZ</string>
     <string name="taskDesk">Доска задач</string>
-    <string name="toDo">Выполнить</string>
+    <string name="toDo">Запланировано</string>
     <string name="inProgress">В работе</string>
     <string name="done">Готово</string>
     <string name="name">Название</string>
@@ -18,4 +18,9 @@
     <string name="add_comment">Создать новый коментарий</string>
     <string name="change_status">Сменить статус</string>
     <string name="save_new_comment">Сохранить комментарий</string>
+    <string name="status_start">Запланирована</string>
+    <string name="status_in_progress">В работе</string>
+    <string name="status_done">Выполнена</string>
+    <string name="add_status_message">Статус задачи успешно изменён</string>
+
 </resources>

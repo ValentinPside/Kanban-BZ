@@ -19,15 +19,15 @@ class DbRepositoryImpl @Inject constructor(private val db: MainDb) : DbRepositor
         return db.dao().getTasksById(id).asTaskAndComments()
     }
 
-    override fun getStartTasks(): Flow<List<TaskEntity>>{
+    override suspend fun getStartTasks(): List<TaskEntity>{
         return db.dao().getStartTasks()
     }
 
-    override fun getInProgressTasks(): Flow<List<TaskEntity>>{
+    override suspend fun getInProgressTasks(): List<TaskEntity>{
         return db.dao().getInProgressTasks()
     }
 
-    override fun getDoneTasks(): Flow<List<TaskEntity>>{
+    override suspend fun getDoneTasks(): List<TaskEntity>{
         return db.dao().getDoneTasks()
     }
 
@@ -46,6 +46,10 @@ class DbRepositoryImpl @Inject constructor(private val db: MainDb) : DbRepositor
     override suspend fun addNewComment(taskId: Int, text: String) {
         val commentEntity = CommentEntity(0, taskId, text)
         db.dao().upsertCommentsTable(commentEntity)
+    }
+
+    override suspend fun changeStatus(id: Int, statusId: Int) {
+        db.dao().updateStatus(id, statusId)
     }
 
 }

@@ -18,11 +18,11 @@ class NewStatusViewModel @Inject constructor(
     private val state = MutableStateFlow(NewStatusState())
     fun observeUi() = state.asStateFlow()
 
-    fun addComment(id: Int, commentText: String){
+    fun changeStatus(id: Int, statusId: Int){
         viewModelScope.launch {
             try {
-                dbRepository.addNewComment(id, commentText)
-                state.update { it.copy(success = R.string.add_comment_message, error = null) }
+                dbRepository.changeStatus(id, statusId)
+                state.update { it.copy(success = R.string.add_status_message, error = null) }
             } catch (e: Exception) {
                 state.update { it.copy(error = R.string.error_message) }
             }

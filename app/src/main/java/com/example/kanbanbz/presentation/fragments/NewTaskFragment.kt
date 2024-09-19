@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -40,7 +39,9 @@ class NewTaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.specificToolbars.setNavigationOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(
+                R.id.action_newTaskFragment_to_deskFragment
+            )
         }
 
         binding.button.setOnClickListener {

@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DeskViewModel @Inject constructor(
-private val dbRepository: DbRepository
+    private val dbRepository: DbRepository
 ) : ViewModel() {
 
     private val state = MutableStateFlow(DeskState())
@@ -29,17 +29,16 @@ private val dbRepository: DbRepository
                 val listStart = mutableListOf<Task>()
                 val listInProgress = mutableListOf<Task>()
                 val listDone = mutableListOf<Task>()
-                dbRepository.getStartTasks().collect { it ->
-                    listStart.addAll(it.asTaskList())
-                    state.update { it.copy(startList = listStart, error = null) }
-                }
-                dbRepository.getInProgressTasks().collect { it ->
-                    listInProgress.addAll(it.asTaskList())
-                    state.update { it.copy(inProgressList = listInProgress, error = null) }
-                }
-                dbRepository.getDoneTasks().collect { it ->
-                    listDone.addAll(it.asTaskList())
-                    state.update { it.copy(doneList = listDone, error = null) }
+                listStart.addAll(dbRepository.getStartTasks().asTaskList())
+                listInProgress.addAll(dbRepository.getInProgressTasks().asTaskList())
+                listDone.addAll(dbRepository.getDoneTasks().asTaskList())
+                state.update {
+                    it.copy(
+                        startList = listStart,
+                        inProgressList = listInProgress,
+                        doneList = listDone,
+                        error = null
+                    )
                 }
             } catch (e: Exception) {
                 state.update { it.copy(error = R.string.error_message) }
