@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.kanbanbz.R
 import com.example.kanbanbz.app.App
 import com.example.kanbanbz.databinding.FragmentNewCommentBinding
 import com.example.kanbanbz.presentation.viewmodels.NewCommentViewModel
@@ -47,7 +49,10 @@ class NewCommentFragment : Fragment() {
             val text = binding.editTextTextMultiLine.text.toString()
             if (!id.isNullOrBlank() && text.isNotBlank()) {
                 viewModel.addComment(id!!.toInt(), text)
-                findNavController().popBackStack()
+                val bundle = bundleOf("id" to id)
+                findNavController().navigate(
+                    R.id.action_newCommentFragment_to_taskFragment, bundle
+                )
             }
         }
 

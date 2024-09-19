@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class DbRepositoryImpl @Inject constructor(private val db: MainDb) : DbRepository {
 
-    override fun getTasksById(id: Int): TaskAndComments? {
+    override suspend fun getTasksById(id: Int): TaskAndComments? {
         return db.dao().getTasksById(id).asTaskAndComments()
     }
 

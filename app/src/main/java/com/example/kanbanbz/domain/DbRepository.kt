@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface DbRepository {
 
-    fun getTasksById(id: Int): TaskAndComments?
+    suspend fun getTasksById(id: Int): TaskAndComments?
 
     fun getStartTasks(): Flow<List<TaskEntity>>
 

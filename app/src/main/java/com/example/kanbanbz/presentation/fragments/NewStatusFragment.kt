@@ -48,14 +48,6 @@ class NewStatusFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        /*binding.saveNewCommentButton.setOnClickListener {
-            val text = binding.editTextTextMultiLine.text.toString()
-            if (!id.isNullOrBlank() && text.isNotBlank()) {
-                viewModel.addComment(id!!.toInt(), text)
-                findNavController().popBackStack()
-            }
-        }*/
-
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.observeUi().collect { state ->

@@ -27,24 +27,19 @@ class TaskViewModel @Inject constructor(
             try {
                 val taskAndComments = dbRepository.getTasksById(id)
                 val name = taskAndComments?.name
-                val commentsText = taskAndComments?.commentList.toString()
+                var commentsText = ""
+                var commentNumber = 1
+                val commentsTextList = taskAndComments?.commentList
+                commentsTextList?.forEach { comment ->
+                    commentsText = commentsText.plus(commentNumber).plus(") ").plus(comment.text).plus("\n\n")
+                    commentNumber++
+                }
                 state.update { it.copy(taskName = name, comments = commentsText, error = null) }
             } catch (e: Exception) {
                 state.update { it.copy(error = R.string.empty_comments_message) }
             }
         }
     }
-
-    /*fun addComment(id: Int, commentText: String){
-        viewModelScope.launch {
-            try {
-                dbRepository.addNewComment(id, commentText)
-                state.update { it.copy(success = R.string.add_comment_message, error = null) }
-            } catch (e: Exception) {
-                state.update { it.copy(error = R.string.error_message) }
-            }
-        }
-    }*/
 }
 
 data class TaskState(

@@ -43,7 +43,9 @@ class TaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.specificToolbars.setNavigationOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(
+                R.id.action_taskFragment_to_deskFragment
+            )
         }
 
         binding.addCommentButton.setOnClickListener {
