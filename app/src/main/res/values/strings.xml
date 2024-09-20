@@ -15,7 +15,7 @@
     <string name="newTaskTextButton">Создать новую задачу</string>
     <string name="success_message">Задача успешно создана</string>
     <string name="empty_message">Необходимо ввести название задачи</string>
-    <string name="add_comment">Создать новый коментарий</string>
+    <string name="add_comment">Добавить коментарий</string>
     <string name="change_status">Сменить статус</string>
     <string name="save_new_comment">Сохранить комментарий</string>
     <string name="status_start">Запланирована</string>

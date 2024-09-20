@@ -99,6 +99,24 @@ class DeskFragment : Fragment() {
         binding.startRv.addItemDecoration(
             DividerItemDecoration(
                 requireContext(),
+                LinearLayoutManager.HORIZONTAL
+            )
+        )
+        binding.inProgressRv.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                LinearLayoutManager.HORIZONTAL
+            )
+        )
+        binding.doneRv.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                LinearLayoutManager.HORIZONTAL
+            )
+        )
+        binding.startRv.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
                 LinearLayoutManager.VERTICAL
             )
         )
